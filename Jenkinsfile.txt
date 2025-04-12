@@ -9,14 +9,14 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 dir('DockerJenkinsExperiment') {
-                    sh 'ls -l'
-                    sh 'docker build -t my-docker-webapp .'
+                    bat 'dir'  // Windows equivalent of 'ls -l'
+                    bat 'docker build -t my-docker-webapp .'
                 }
             }
         }
         stage('Run Docker Container') {
             steps {
-                sh 'docker run -d -p 8081:80 my-docker-webapp'
+                bat 'docker run -d -p 8081:80 my-docker-webapp'
             }
         }
     }
